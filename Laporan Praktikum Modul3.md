@@ -62,209 +62,241 @@ int main() {
 
 ```
 ### Output
-![Screenshot 2024-06-12 082214](https://github.com/yokaroo/Praktikum-Struktur-Data-Asignment-Modul2/blob/main/Screenshot%202024-06-12%20082214.png)
+![Screenshot 2024-06-12 205417](https://github.com/yokaroo/Praktikum-Struktur-Data-Asignment-Modul3/blob/main/Screenshot%202024-06-12%20205417.png)
 ## Iterpretasi
-Kode program ini mendeklarasikan sebuah array 3 dimensi berukuran 2x3x3 dan meminta pengguna untuk mengisi setiap elemen array melalui input. Program menggunakan tiga loop bersarang untuk mengakses setiap elemen array dan mengisi nilainya. Setelah semua nilai diinput, program menampilkan nilai-nilai tersebut dalam dua format: pertama, dengan menunjukkan indeks setiap elemen dan nilainya, dan kedua, dengan menampilkan elemen-elemen array dalam bentuk baris dan kolom yang lebih mudah dibaca. Program kemudian mengakhiri dengan return 0, menandakan bahwa program selesai dijalankan dengan sukses.
+Program C++ ini menggunakan algoritma Bubble Sort untuk mengurutkan sebuah array `double`. Fungsi `bubble_sort` mengurutkan elemen array secara menaik dengan membandingkan elemen-elemen berdekatan dan menukarnya jika elemen pertama lebih besar dari elemen kedua. Fungsi `print_array` mencetak elemen-elemen array ke konsol. Dalam `main`, sebuah array `a` dideklarasikan dengan lima elemen. Program mencetak array sebelum dan sesudah pengurutan menggunakan Bubble Sort. Elemen array diurutkan dan ditampilkan dalam urutan yang benar.
 
-## 2. Program Mencari Nilai Maksimal Pada Aray
+## 2. Mengurutkan karakter secara descending (dari terbesar hingga terkecil) menggunakan Algoritma Insertion Sort
 ```C++
-#include <iostream>
-using namespace std;
-
-int main() {
-    int maks, a, lokasi;
-    cout << "Masukkan panjang array: ";
-    cin >> a;
-    int array[a];
-
-    cout << "Masukkan " << a << " angka\n";
-    for (int i = 0; i < a; i++) {
-        cout << "Array ke-" << i << ": ";
-        cin >> array[i];
-    }
-
-    maks = array[0];
-    lokasi = 0;  // Inisialisasi lokasi dengan indeks pertama
-
-    for (int i = 1; i < a; i++) {  // Mulai dari indeks ke-1 karena maks sudah diinisialisasi dengan array[0]
-        if (array[i] > maks) {
-            maks = array[i];
-            lokasi = i;
-        }
-    }
-
-    cout << "Nilai maksimum adalah " << maks << " berada di Array ke-" << lokasi << endl;
-
-    return 0;
+#include <iostream> 
+ 
+using namespace std; 
+ 
+void insertion_sort(char arr[], int length) { 
+    int i, j; 
+    char tmp; 
+ 
+    for (i = 1; i < length; i++) { 
+     j = i; 
+ 
+        while (j > 0 && arr[j - 1] < arr[j]) { 
+            tmp = arr[j]; 
+            arr[j] = arr[j - 1]; 
+            arr[j - 1] = tmp; 
+            j--; 
+        }//end of while loop 
+    }//end of for loop 
+} 
+ 
+void print_array(char a[], int length) { 
+ 
+    for(int i=0; i<length; i++) { 
+        cout << a[i] << "\t"; 
+    } 
+    cout << endl; 
 }
+int main() { 
+	int length = 6; 
+	char a[length] = {'c', 'f', 'a', 'z', 'd', 'p'}; 
+	cout << "Urutan karakter sebelum sorting: " << endl; 
+	print_array(a, length); 
+	insertion_sort(a, length); 
+	cout << "\nUrutan karakter setelah sorting: " << endl; 
+	print_array(a, length); 
+} 
 ```
 ## Output
-![Screenshot 2024-06-12 083334](https://github.com/yokaroo/Praktikum-Struktur-Data-Asignment-Modul2/blob/main/Screenshot%202024-06-12%20083334.png)
+![Screenshot 2024-06-12 210111](https://github.com/yokaroo/Praktikum-Struktur-Data-Asignment-Modul3/blob/main/Screenshot%202024-06-12%20210111.png)
 ## Interpretasi Code
-Kode tersebut adalah sebuah program C++ yang mencari nilai maksimum dalam sebuah array yang dimasukkan oleh pengguna. Program ini meminta pengguna untuk memasukkan panjang array dan kemudian mengisi array dengan angka-angka yang diinput oleh pengguna. Setelah array terisi, program mencari nilai maksimum dalam array tersebut dengan memulai perbandingan dari elemen kedua (indeks 1) hingga elemen terakhir. Jika ditemukan nilai yang lebih besar daripada nilai maksimum saat ini, nilai tersebut akan menjadi nilai maksimum yang baru, dan lokasinya (indeks) akan diperbarui. Akhirnya, program menampilkan nilai maksimum dan indeksnya kepada pengguna.
+Program C++ ini menggunakan algoritma Insertion Sort untuk mengurutkan sebuah array dari karakter. Fungsi `insertion_sort` menerima array dan panjangnya sebagai parameter, lalu mengurutkan elemen array secara menurun. Algoritma ini bekerja dengan membandingkan setiap elemen dengan elemen-elemen sebelumnya, dan menukar posisinya jika diperlukan untuk memastikan bahwa elemen-elemen tersebut berada dalam urutan yang benar. Fungsi `print_array` digunakan untuk mencetak elemen-elemen array ke konsol, dipisahkan oleh tab. Dalam `main`, sebuah array `a` dideklarasikan dengan enam karakter. Program mencetak array sebelum dan sesudah pengurutan menggunakan Insertion Sort, sehingga kita dapat melihat perubahan urutan karakter dari tidak terurut menjadi terurut secara menurun.
 
 ### UnGuided
-## 1. Buatlah program untuk menampilkan output seperti berikut dengan data yang ditampilkan user
+## 1. Kelas S1 IF 2016 G memiliki 5 mahasiswa. Pada akhir semester mereka menerima lembar Indeks Prestasi Semester (IPS), masing-masing mahasiswa tersebut memiliki IPS sebagai berikut: {3.8, 2.9, 3.3, 4.0, 2.4}. Buatlah program untuk mengurutkan IPS mahasiswa tersebut dari yang terbesar hingga terkecil dengan menggunakan algoritma Selection Sort!  (Score: 30)
 ```C++
-//Menggunakan library input/output dan struktur data
 #include <iostream>
-#include <sstream>
-#include <vector>
+
 using namespace std;
 
-//Membuat kode inti atau main code
-int main() {
-    string name; // membuat variabel
-    //membuat vektor bertipe integer
-    vector<int> numbers;
-    vector<int> evenNumbers;
-    vector<int> oddNumbers;
-    
-    //meminta inputan
-    cout << "Masukkan nama Anda:" << endl;
-    getline(cin, name);
-    cout<<endl;
-    //Menyapa pengguna dan meminta inputan angka
-    cout<<"Halo, "<< name << ". Selamat datang di Program pemilihan angka genap dan ganjil." << endl<<endl;
-    cout << "Masukkan angka anda, pisahkan dengan spasi!" << endl;
-    cout << "Klik enter untuk menampilkan hasil !" << endl;
-    string input;
-    getline(cin, input);
-    
-    // Membaca angka-angka dari baris input
-    stringstream ss(input);
-    int num;
-    while (ss >> num) {
-        numbers.push_back(num);
-    }
-    
-    // Memisahkan angka genap dan ganjil dari inputan pengguna
-    for (int num : numbers) {
-        if (num % 2 == 0) { //menggunakan modulus
-            evenNumbers.push_back(num);  //jika habis di bagi 2 masuk ke sini
-        } else {
-            oddNumbers.push_back(num); //jika tidak habis masuk kesini
+// Fungsi untuk mengurutkan array menggunakan Selection Sort
+void selectionSortDescending(float arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        // Mencari elemen terbesar di subarray yang tidak diurutkan
+        int maxIdx = i;
+        for (int j = i + 1; j < n; j++) {
+            if (arr[j] > arr[maxIdx]) {
+                maxIdx = j;
+            }
         }
+        
+        // Menukar elemen terbesar dengan elemen pertama di subarray yang tidak diurutkan
+        float temp = arr[maxIdx];
+        arr[maxIdx] = arr[i];
+        arr[i] = temp;
     }
-    
-    // Menampilkan angka-angka genap
-    cout << "Angka genap: ";
-    for (int num : evenNumbers) {
-        cout << num << " ";
+}
+
+// Fungsi untuk mencetak array
+void printArray(float arr[], int size) {
+    for (int i = 0; i < size; i++) {
+        cout << arr[i] << " ";
     }
     cout << endl;
-    
-    // Menampilkan angka-angka ganjil
-    cout << "Angka ganjil: ";
-    for (int num : oddNumbers) {
-        cout << num << " ";
-    }
-    cout << endl<<endl;
-    
-    return 0;
 }
-```
-### Output
-![Screenshot 2024-06-12 094446](https://github.com/yokaroo/Praktikum-Struktur-Data-Asignment-Modul2/blob/main/Screenshot%202024-06-12%20094446.png)
-
-## 2. Buatlah program Input array tiga dimensi (seperti pada guided) tetapi jumlah atau ukuran elemennya diinputkan oleh user!
-```C++
-#include <iostream>
-using namespace std;
 
 int main() {
-    int x, y, z;
-
-    // Meminta pengguna untuk memasukkan ukuran array
-    cout << "Masukkan jumlah baris: ";
-    cin >> x;
-    cout << "Masukkan jumlah kolom: ";
-    cin >> y;
-    cout << "Masukkan jumlah depth: ";
-    cin >> z;
-
-    // Deklarasi array tiga dimensi
-    int arr[x][y][z];
-
-    // Input elemen array
-    cout << "Masukkan elemen-elemen array:\n";
-    for (int i = 0; i < x; ++i) {
-        for (int j = 0; j < y; ++j) {
-            for (int k = 0; k < z; ++k) {
-                cout << "Array[" << i << "][" << j << "][" << k << "]: ";
-                cin >> arr[i][j][k];
-            }
-        }
-    }
-
-    // Output elemen array
-    cout << "\nElemen-elemen array yang dimasukkan:\n";
-    for (int i = 0; i < x; ++i) {
-        for (int j = 0; j < y; ++j) {
-            for (int k = 0; k < z; ++k) {
-                cout << "Array[" << i << "][" << j << "][" << k << "]: " << arr[i][j][k] << endl;
-            }
-        }
-    }
-
+    // Array IPS mahasiswa
+    float ips[] = {3.8, 2.9, 3.3, 4.0, 2.4};
+    int n = sizeof(ips) / sizeof(ips[0]);
+    
+    // Mengurutkan array
+    selectionSortDescending(ips, n);
+    
+    // Mencetak hasil pengurutan
+    cout << "IPS mahasiswa dari yang terbesar hingga terkecil: ";
+    printArray(ips, n);
+    
     return 0;
 }
 
+```
+### Output
+![Screenshot 2024-06-12 210538](https://github.com/yokaroo/Praktikum-Struktur-Data-Asignment-Modul3/blob/main/Screenshot%202024-06-12%20210538.png)
+
+## 2. Pak RT memiliki 10 warga dengan nama: siti, situ, sana, ana, ani, caca, cici, dida, dodo, dan dadi. Supaya mudah dalam melakukan pencarian, Pak RT akan mengurutkan namanama tersebut sesuai dengan alfabet. Buatlah program untuk membantu Pak RT dengan menggunakan algoritma Bubble Sort! (Score: 30) 
+```C++
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+// Fungsi untuk mengurutkan array menggunakan Bubble Sort
+void bubbleSort(string arr[], int n) {
+    bool swapped;
+    for (int i = 0; i < n - 1; i++) {
+        swapped = false;
+        for (int j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                // Menukar elemen jika urutan salah
+                string temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+                swapped = true;
+            }
+        }
+        // Jika tidak ada elemen yang ditukar, maka array sudah terurut
+        if (!swapped)
+            break;
+    }
+}
+
+// Fungsi untuk mencetak array
+void printArray(string arr[], int size) {
+    for (int i = 0; i < size; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+}
+
+int main() {
+    // Array nama warga
+    string warga[] = {"siti", "situ", "sana", "ana", "ani", "caca", "cici", "dida", "dodo", "dadi"};
+    int n = sizeof(warga) / sizeof(warga[0]);
+    
+    // Mengurutkan array
+    bubbleSort(warga, n);
+    
+    // Mencetak hasil pengurutan
+    cout << "Nama warga yang sudah diurutkan sesuai alfabet: ";
+    printArray(warga, n);
+    
+    return 0;
+}
 ```
 
 ## Output
-![Screenshot 2024-06-12 094933.png](https://github.com/yokaroo/Praktikum-Struktur-Data-Asignment-Modul2/blob/main/Screenshot%202024-06-12%20094933.png)
+![Screenshot 2024-06-12 211028](https://github.com/yokaroo/Praktikum-Struktur-Data-Asignment-Modul3/blob/main/Screenshot%202024-06-12%20211028.png)
 
-### 3.  Buatlah program menu untuk mencari nilai Maksimum, Minimum dan Nilai rata– rata dari suatu array dengan input yang dimasukan oleh user
+### 3.   Buatlah program yang meminta user menginputkan suatu bilangan n dan meminta user untuk menginputkan sejumlah n karakter. Kemudian program akan melakukan sorting secara menaik (ascending) dan menurun (descending)! (Score: 40)
 ```C++
 #include <iostream>
-#include <climits> // Untuk menggunakan konstanta INT_MIN dan INT_MAX
+#include <vector>
+#include <algorithm> // Untuk std::swap
+
 using namespace std;
+
+// Fungsi untuk mengurutkan array menggunakan Bubble Sort (ascending)
+void bubbleSortAscending(vector<char>& arr) {
+    int n = arr.size();
+    bool swapped;
+    for (int i = 0; i < n - 1; i++) {
+        swapped = false;
+        for (int j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                swap(arr[j], arr[j + 1]);
+                swapped = true;
+            }
+        }
+        if (!swapped)
+            break;
+    }
+}
+
+// Fungsi untuk mengurutkan array menggunakan Bubble Sort (descending)
+void bubbleSortDescending(vector<char>& arr) {
+    int n = arr.size();
+    bool swapped;
+    for (int i = 0; i < n - 1; i++) {
+        swapped = false;
+        for (int j = 0; j < n - i - 1; j++) {
+            if (arr[j] < arr[j + 1]) {
+                swap(arr[j], arr[j + 1]);
+                swapped = true;
+            }
+        }
+        if (!swapped)
+            break;
+    }
+}
+
+// Fungsi untuk mencetak array
+void printArray(const vector<char>& arr) {
+    for (char c : arr) {
+        cout << c << endl;
+    }
+}
 
 int main() {
     int n;
-
-    // Meminta pengguna untuk memasukkan jumlah elemen array
-    cout << "Masukkan jumlah elemen array: ";
+    cout << "input (n) = ";
     cin >> n;
 
-    // Membuat array untuk menyimpan elemen-elemen yang dimasukkan oleh pengguna
-    int arr[n];
+    vector<char> characters(n);
 
-    // Meminta pengguna untuk memasukkan elemen-elemen array
-    cout << "Masukkan elemen-elemen array:\n";
-    for (int i = 0; i < n; ++i) {
-        cout << "Elemen " << i + 1 << ": ";
-        cin >> arr[i];
+    for (int i = 0; i < n; i++) {
+        cout << "Karakter ke-" << i + 1 << ": ";
+        cin >> characters[i];
     }
 
-    // Mencari nilai maksimum, minimum, dan rata-rata
-    int maksimum = INT_MIN;
-    int minimum = INT_MAX;
-    int total = 0;
+    cout << "\nUrutan karakter sebelum sorting:" << endl;
+    printArray(characters);
 
-    for (int i = 0; i < n; ++i) {
-        if (arr[i] > maksimum) {
-            maksimum = arr[i];
-        }
-        if (arr[i] < minimum) {
-            minimum = arr[i];
-        }
-        total += arr[i];
-    }
+    // Mengurutkan secara ascending
+    bubbleSortAscending(characters);
+    cout << "\nUrutan karakter setelah ascending sort:" << endl;
+    printArray(characters);
 
-    double rata_rata = static_cast<double>(total) / n;
-
-    // Menampilkan hasil
-    cout << "\nNilai Maksimum: " << maksimum << endl;
-    cout << "Nilai Minimum: " << minimum << endl;
-    cout << "Nilai Rata-rata: " << rata_rata << endl;
+    // Mengurutkan secara descending
+    bubbleSortDescending(characters);
+    cout << "\nUrutan karakter setelah descending sort:" << endl;
+    printArray(characters);
 
     return 0;
 }
+
+
 ```
 ## output
-![Screenshot 2024-06-12 095423](https://github.com/yokaroo/Praktikum-Struktur-Data-Asignment-Modul2/blob/main/Screenshot%202024-06-12%20095423.png)
+![Screenshot 2024-06-12 212302](https://github.com/yokaroo/Praktikum-Struktur-Data-Asignment-Modul3/blob/main/Screenshot%202024-06-12%20212302.png)
 
 ### Kesimpulan 
-Dengan pemahaman tentang berbagai jenis array ini, kita dapat lebih efektif menggunakan dan memahami struktur data yang kompleks dan penggunaannya dalam pemrograman. Array merupakan fondasi yang penting dalam mempelajari struktur data lainnya dan memiliki peran yang krusial dalam pengembangan perangkat lunak
+Kedua program menggunakan algoritma pengurutan yang berbeda, yaitu Bubble Sort dan Insertion Sort, untuk mengurutkan array. Mereka berfungsi dengan cara yang sama, yaitu dengan membandingkan elemen-elemen array dan menukar posisi mereka jika diperlukan. Hasilnya adalah array yang diurutkan sesuai dengan aturan pengurutan yang ditentukan.
